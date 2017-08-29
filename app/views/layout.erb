@@ -12,7 +12,7 @@
 
       <a href="/cofee_houses/new"> Create Review </a>
       <a href="/logout"> Log Out </a>
-      <p>Welcome, <%=current_user.username %></p>
+      <h4>Welcome, <%=current_user.username %></h4>
 
     <% else %>
       <a href="/signup">Sign Up</a>
@@ -24,7 +24,7 @@
     <h1>Coffe Houses</h1>
     <%= yield %>
 
-    
+
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
