@@ -1,0 +1,3 @@
+class CoffeeHousesController < ApplicationController
+
+end
