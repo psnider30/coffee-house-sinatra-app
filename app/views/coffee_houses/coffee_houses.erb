@@ -1,0 +1,9 @@
+<h4>Welcom <%= current_user.username %></h4>
+<h2>Coffee Houses</h2>
+<br><br>
+
+<% @coffee_houses.each do |coffee_house| %>
+  <div>
+    <a href="/coffee_houses/<%= coffee_house.slug %>"><%= coffee_house.name %></a>
+  </div>
+<% end  %>
