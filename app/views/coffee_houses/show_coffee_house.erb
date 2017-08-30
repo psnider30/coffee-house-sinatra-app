@@ -1,0 +1,19 @@
+<h2>Name: <%= @coffee_house.name %></h2>
+<h3>Location: <%= @coffee_house.location %></h3>
+<br><br>
+
+<% CoffeeHouse.all.each do |coffee_house| %>
+
+  <% if coffee_house.slug == @coffee_house.slug %>
+
+    <% CoffeeHouseUser.all.each do |house_user| %>
+      <% if coffee_house.id == house_user.coffee_house_id %>
+        <% user = User.find(house_user.user_id) %>
+
+        <label><a href="/users/<%= user.slug %>"><%= user.username %></a></label>
+      <% end %>
+    <% end %>
+
+    <p> <%= coffee_house.review %></p>
+  <% end %>
+<% end %>

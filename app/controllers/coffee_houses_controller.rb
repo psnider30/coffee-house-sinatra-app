@@ -38,4 +38,35 @@ class CoffeeHousesController < ApplicationController
     end
   end
 
+  get '/coffee_houses/:slug/edit' do
+    if logged_in?
+      @user = current_user
+      @coffee_house = CoffeeHouse.find_by_slug(params[:slug])
+      erb :'coffee_houses/edit_coffee_house'
+    else
+      redirect '/login'
+    end
+  end
+
+  patch '/coffee_houses/:slug' do
+    @coffee_house = CoffeeHouse.find_by_slug(params[:slug])
+    if params[:name] == '' || params[:location] == '' || params[:review] == ''
+      redirect "/coffee_houses/#{@coffee_house.slug}/slug"
+    else
+      @coffee_house.update(name: params[:name], location: params[:location], review: params[:review])
+      redirect "/coffee_houses/#{@coffee_house.slug}"
+    end
+  end
+
+  delete '/coffee_houses/:slug' do
+    @coffee_house = CoffeeHouse.find_by_slug(params[:slug])
+    if logged_in? && current_user.id == session[:user_id]
+      @coffee_house.delete
+      redirect "/users/#{current_user.slug}"
+    else
+      redirect '/login'
+    end
+
+  end
+
 end
