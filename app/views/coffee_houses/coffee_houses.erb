@@ -1,8 +1,8 @@
 <h2>All Coffee Houses</h2>
-<br><br>
+<br>
 
 <% @coffee_houses.each do |coffee_house| %>
   <div>
-    <a href="/coffee_houses/<%= coffee_house.slug %>"><%= coffee_house.name %></a>
+    <h5><a href="/coffee_houses/<%= coffee_house.slug %>"><%= coffee_house.name %></a>,  <%= coffee_house.location %></h5>
   </div>
 <% end  %>

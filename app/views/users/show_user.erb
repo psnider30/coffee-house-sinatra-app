@@ -1,1 +1,13 @@
-show user
+<h4>Reviews by, <%= @user.username %></h4>
+<br><br>
+
+<% @user.coffee_houses.each do |coffee_house| %>
+
+  <div>
+    <h5><a href="/coffee_houses/<%= coffee_house.slug %>"><%= coffee_house.name %></a></h5>
+    <p>Location: <%= coffee_house.location %></p>
+    <p> Review: <br> <%= coffee_house.review %></p>
+  </div>
+  <br><br>
+
+<% end %>
