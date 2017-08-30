@@ -2,7 +2,7 @@ class CoffeeHousesController < ApplicationController
 
   get '/coffee_houses' do
     if logged_in?
-      @coffee_houses = CoffeeHouse.all
+      @coffee_houses = CoffeeHouse.all.uniq {|coffee_house| coffee_house[:name]}
       erb :'coffee_houses/coffee_houses'
     else
       redirect '/login'
@@ -21,7 +21,10 @@ class CoffeeHousesController < ApplicationController
     if params[:name] == '' || params[:location] == '' || params[:review] == ''
       redirect '/coffee_houses/new'
     else
-      @coffee_house = current_user.coffee_houses.create(name: params[:name], location: params[:location], review: params[:review])
+      @coffee_house = CoffeeHouse.create(name: params[:name], location: params[:location], review: params[:review])
+      @coffee_house.users << current_user
+      @coffee_house.save
+
       redirect "/coffee_houses/#{@coffee_house.slug}"
     end
   end

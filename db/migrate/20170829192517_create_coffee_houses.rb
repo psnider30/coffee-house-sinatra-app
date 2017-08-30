@@ -5,7 +5,6 @@ class CreateCoffeeHouses < ActiveRecord::Migration[5.1]
       t.string :name
       t.string :location
       t.string :review
-      t.integer :user_id
     end
   end
 end
