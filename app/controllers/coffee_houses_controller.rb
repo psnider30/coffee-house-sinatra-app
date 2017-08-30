@@ -1,4 +1,8 @@
+require 'rack-flash'
+
 class CoffeeHousesController < ApplicationController
+
+  use Rack::Flash
 
   get '/coffee_houses' do
     if logged_in?
@@ -19,6 +23,7 @@ class CoffeeHousesController < ApplicationController
 
   post '/coffee_houses/new' do
     if params[:name] == '' || params[:location] == '' || params[:review] == ''
+      flash[:message] = 'Please fill out all fields.'
       redirect '/coffee_houses/new'
     else
       @coffee_house = CoffeeHouse.create(name: params[:name], location: params[:location], review: params[:review])
@@ -65,7 +70,8 @@ class CoffeeHousesController < ApplicationController
   patch '/coffee_houses/:slug' do
     @coffee_house = CoffeeHouse.find_by_slug(params[:slug])
     if params[:name] == '' || params[:location] == '' || params[:review] == ''
-      redirect "/coffee_houses/#{@coffee_house.slug}/slug"
+      flash[:message] = 'Please fill out all fields.'
+      redirect "/coffee_houses/#{@coffee_house.slug}/edit"
     else
       @coffee_house.update(name: params[:name], location: params[:location], review: params[:review])
       redirect "/coffee_houses/#{@coffee_house.slug}"

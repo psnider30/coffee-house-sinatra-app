@@ -1,6 +1,10 @@
 <h2>Edit Coffee House Review for <%= @coffee_house.name %>  by  <%= @user.username %></h2>
 <br>
 
+<% if flash.has?(:message) %>
+  <h3><%= flash[:message] %></h3>
+<%end%>
+
 <form action="/coffee_houses/<%= @coffee_house.slug %>" method="post">
 
   <input id="hidden" type="hidden" name="_method" value="patch">
