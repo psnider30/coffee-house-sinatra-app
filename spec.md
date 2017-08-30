@@ -9,9 +9,10 @@ Specs:
 - [x] Include at least one has_many relationship (users and cofee_houses have a many to many relationship)
 - [x] Include user accounts - Accounts are created through '/signup' route and form in signup.erb view
 - [x] Ensure that users can't modify content created by other users - In CoffeeHousesController the '/coffee_houses/:slug/edit' route checks the join table to make sure the coffee_houses_id and user_id are a match before showing the edit page. Also the edit link and delete button only show up on a users review page by checking if the current_user is a match for the users page by checking each slug
-- [ ] Include user input validations
-- [ ] Display validation failures to user with error message (example form URL e.g. /posts/new)
-- [ ] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
+- [x] Include user input validations - checks that users have a username and password before signing up or logging in.
+      Checks that a Coffee House has a name, location, and review (none blank) before creating or editing Coffee House.
+- [x] Display validation failures to user with error message (example form URL e.g. /posts/new)
+- [x] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
 
 Confirm
 - [x] You have a large number of small Git commits
