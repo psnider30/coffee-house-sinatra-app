@@ -1,4 +1,4 @@
-# coffee-house-sinatra-app
+# Coffee House Sinatra App
 
 # Description:
 This is a basic MVC CRUD application built using Sinatra. This application functions as a review site for Coffee Houses. Users must create an account or login to an existing account. Then they can create Coffee House reviews with name, location, and review content. Other users can create reviews and the page for a Coffee House will show all reviews.
@@ -13,3 +13,9 @@ This is a basic MVC CRUD application built using Sinatra. This application funct
 7. Launch the application by typing 'shotgun' or 'rackup' into the terminal
 8. Open the URL link that shows up in terminal into your the browser to enter the application
 9. Type 'control + c' in terminal to stop the local server and exit the application
+
+# Contributing
+Bug reports and pull requests are welcome on GitHub at https://github.com/psnider30/coffee-house-sinatra-app. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the Contributor Covenant code of conduct.
+
+# License
+The app is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
