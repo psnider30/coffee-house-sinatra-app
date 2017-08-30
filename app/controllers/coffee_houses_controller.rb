@@ -2,7 +2,7 @@ class CoffeeHousesController < ApplicationController
 
   get '/coffee_houses' do
     if logged_in?
-      @coffee_houses = CoffeeHouse.all.uniq {|coffee_house| coffee_house[:name]}
+      @coffee_houses = CoffeeHouse.all.uniq {|coffee_house| coffee_house[:name] && coffee_house[:location]}
       erb :'coffee_houses/coffee_houses'
     else
       redirect '/login'
@@ -39,10 +39,24 @@ class CoffeeHousesController < ApplicationController
   end
 
   get '/coffee_houses/:slug/edit' do
-    if logged_in?
+    @coffee_house = CoffeeHouse.find_by_slug(params[:slug])
+    user = nil
+    CoffeeHouse.all.each do |coffee_house|
+      if coffee_house.id == @coffee_house.id
+
+        CoffeeHouseUser.all.each do |house_user|
+          if coffee_house.id == house_user.coffee_house_id
+            user = User.find(house_user.user_id)
+          end
+        end
+
+      end
+    end
+
+    if logged_in? && user == current_user
       @user = current_user
-      @coffee_house = CoffeeHouse.find_by_slug(params[:slug])
       erb :'coffee_houses/edit_coffee_house'
+
     else
       redirect '/login'
     end

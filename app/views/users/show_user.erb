@@ -8,14 +8,16 @@
     <p>Location: <%= coffee_house.location %></p>
     <p> Review: <br> <%= coffee_house.review %></p>
 
-    <p><a href="/coffee_houses/<%= coffee_house.slug %>/edit">Edit</a></p>
+    <% if current_user.slug == params[:slug]  %>
+      <p><a href="/coffee_houses/<%= coffee_house.slug %>/edit">Edit</a></p>
 
-    <form action="/coffee_houses/<%= coffee_house.slug %>" method="post">
+      <form action="/coffee_houses/<%= coffee_house.slug %>" method="post">
 
-        <input id="hidden" type="hidden" name="_method" value="delete">
-        <input type="submit" value="delete">
+          <input id="hidden" type="hidden" name="_method" value="delete">
+          <input type="submit" value="delete">
 
-    </form>
+      </form>
+    <% end %>
 
   </div>
   <br><br>
