@@ -4,7 +4,7 @@ class CoffeeHouse < ActiveRecord::Base
   has_many :users, through: :coffee_house_users
 
   def slug
-    name.downcase.gsub(' ','-')
+    name.downcase.gsub(' ','-') + '-' + location.downcase.gsub(' ','-')
   end
 
   def self.find_by_slug(slug)
