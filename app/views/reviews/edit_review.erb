@@ -1,0 +1,25 @@
+<h2>Edit Coffee House Review for <%= @review.coffee_house.name %>  by  <%= @review.user.username %></h2>
+<br>
+
+<% if flash.has?(:message) %>
+  <h3><%= flash[:message] %></h3>
+<%end%>
+
+<form action="/reviews/<%= @review.slug %>" method="post">
+
+  <input id="hidden" type="hidden" name="_method" value="patch">
+
+  <label for="coffee_house_name">Coffee House Name: </label>
+  <input type="text" name="coffee_house_name" id="coffee_house_name" value="<%= @review.coffee_house.name %>">
+
+  <label for="coffee_house_location">Location:</label>
+  <input type="text" name="coffee_house_location" id="coffee_house_location" value="<%= @review.coffee_house.location %>">
+  <br><br>
+
+  <h5>Review:</h5>
+  <textarea name="review_content" rows="8" cols="80"> <%= @review.content %></textarea>
+  <br><br>
+
+  <input type="submit" value="Edit">
+
+</form>

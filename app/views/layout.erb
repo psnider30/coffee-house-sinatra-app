@@ -10,11 +10,11 @@
     <nav>
     <% if logged_in? %>
 
-      <a href="/coffee_houses/new"> Create Review </a>
-      <a href="/coffee_houses"> All Reviews</a>
+      <a href="/coffee_houses"> Coffee Houses</a>
       <% if current_user %>
         <a href="/users/<%= current_user.slug %>"> Your Reviews</a>
       <% end %>
+      <a href="/reviews/new"> Create Review </a>
       <a href="/logout"> Log Out </a>
       <h4>Welcome, <%=current_user.username %></h4>
 

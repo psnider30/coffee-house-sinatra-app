@@ -7,4 +7,5 @@ end
 use Rack::MethodOverride
 use CoffeeHousesController
 use UsersController
+use ReviewsController
 run ApplicationController

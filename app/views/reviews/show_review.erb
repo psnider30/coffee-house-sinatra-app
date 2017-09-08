@@ -1,0 +1,10 @@
+<h2>
+  Review by: <a href="/users/<%= @review.user.slug %>"><%= @review.user.username %></a><br>
+  For: <a href="/coffee_houses/<%= @review.coffee_house.slug %>"><%= @review.coffee_house.name %></a>,
+  <%= @review.coffee_house.location %>
+</h2>
+<br><br>
+
+<div class="review_content">
+  <p><%= @review.content %></p>
+</div>

@@ -1,25 +1,24 @@
 <h4>Reviews by, <%= @user.username %></h4>
 <br><br>
 
-<% @user.coffee_houses.each do |coffee_house| %>
+<% @user.reviews.each do |review| %>
 
   <div>
-    <h5><a href="/coffee_houses/<%= coffee_house.slug %>"><%= coffee_house.name %></a></h5>
-    <p>Location: <%= coffee_house.location %></p>
-    <p> Review: <br> <%= coffee_house.review %></p>
+    <h5><a href="/reviews/<%= review.slug %>"><%= review.coffee_house.name %></a>,
+    <%= review.coffee_house.location %></h5>
 
-    <% if current_user.slug == params[:slug]  %>
-      <p><a href="/coffee_houses/<%= coffee_house.slug %>/edit">Edit</a></p>
+    <p> <%= review.content %></p>
 
-      <form action="/coffee_houses/<%= coffee_house.slug %>" method="post">
+    <% if current_user.id == review.user.id  %>
+      <p><a href="/reviews/<%= review.slug %>/edit">Edit</a></p>
+
+      <form action="/reviews/<%= review.slug %>" method="post">
 
           <input id="hidden" type="hidden" name="_method" value="delete">
           <input type="submit" value="delete">
 
       </form>
     <% end %>
-
   </div>
   <br><br>
-
 <% end %>
