@@ -2,9 +2,12 @@ class Review < ActiveRecord::Base
   belongs_to :user
   belongs_to :coffee_house
 
+  validates_presence_of :content, :user_id, :coffee_house_id
+  validates :content, uniqueness: { scope: [:user_id, :coffee_house_id]}
+
   def slug
-    self.coffee_house.name.downcase.gsub(' ','-') + '-' +
-    self.coffee_house.location.downcase.gsub(' ','-') + '-' + self.user.username.downcase.gsub(' ','-')
+    coffee_house.name.downcase.gsub(' ','-') + '-' +
+    coffee_house.location.downcase.gsub(' ','-') + '-' + user.username.downcase.gsub(' ','-')
   end
 
   def self.find_by_slug(slug)
